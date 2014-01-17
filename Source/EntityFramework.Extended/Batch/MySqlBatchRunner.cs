@@ -294,6 +294,10 @@ namespace EntityFramework.Batch
                     wroteSet = true;
                 }
 
+                if (entityMap.PropertyMaps.Any(p => p.ColumnName == "RowVersion"))
+                {
+                    sqlBuilder.Append(", RowVersion = RowVersion + 1");
+                }
 
                 updateCommand.CommandText = sqlBuilder.ToString().Replace("[", "").Replace("]", "");
 
