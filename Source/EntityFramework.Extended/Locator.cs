@@ -88,7 +88,7 @@ namespace EntityFramework
         public static void RegisterDefaults(IContainer container)
         {
             container.Register<IMappingProvider>(() => new ReflectionMappingProvider());
-            container.Register<IBatchRunner>(() => new SqlServerBatchRunner());
+            container.Register<IBatchRunner>(() => new MySqlBatchRunner());
             container.Register<IFutureRunner>(() => new FutureRunner());
 
             container.Register<ICacheProvider>(() => new MemoryCacheProvider());
