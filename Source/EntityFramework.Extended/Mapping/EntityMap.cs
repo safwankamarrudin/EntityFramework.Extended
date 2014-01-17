@@ -49,13 +49,19 @@ namespace EntityFramework.Mapping
         {
             get { return _entityType; }
         }
+
+        private string _tableName;
         /// <summary>
         /// Gets or sets the name of the table.
         /// </summary>
         /// <value>
         /// The name of the table.
         /// </value>
-        public string TableName { get; set; }
+        public string TableName
+        {
+            get { return string.IsNullOrEmpty(_tableName) ? "" : _tableName.Replace("[dbo].", ""); }
+            set { _tableName = value; }
+        }
 
         private readonly List<PropertyMap> _propertyMaps;
         /// <summary>
